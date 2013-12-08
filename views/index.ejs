@@ -1,0 +1,49 @@
+<% layout('layouts/default.ejs') -%>
+
+<div ng-controller="MainController">
+    <div class="row">
+        <form class="bs-example bs-example-form">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="newTask" placeholder="Enter task...">
+				        <span class="input-group-btn">
+				            <button class="btn btn-default" type="button" ng-click="addTask(newTask); newTask='';">Add</button>
+				        </span>
+                   </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </form>
+    </div>
+    <br />
+    <div class="row">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th style="width: 120px;"><a href="#" class="btn btn-xs btn-danger" role="button" ng-click="removeTasks()">Delete Selected</a></th>
+                    <th>Task</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="task in tasksContainer.list()">
+                    <td align="center">
+                        <input type="checkbox" ng-click="updateSelection(task.id)" />
+                    </td>
+                    <td>{{task.name}}</td>
+                    <td>{{task.start_date}} </td>
+                    <td>{{task.end_date}}</td>
+                    <td>{{task.total}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <small class="text-muted">Hitting refresh or restarting the app will not make you productive. It's a feature.</small>
+
+    </div>
+</div> <!-- controller holder -->

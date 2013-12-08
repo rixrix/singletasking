@@ -1,0 +1,36 @@
+{
+    "name": "singletasking",
+    "version": "0.0.1",
+    "description": "A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo app that lets you throw in your current task(s) and forget about it at the end of the day. You just need the details anyway because, I would assume, you're using an existing awesome-cloud-based-company-wide-web-based-big-brother-sort-of-thing task management tool or timeshit to transfer your time logs.",
+    "main": "singletasking",
+    "bin": {
+        "singletasking":"singletasking-cli"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "express": "3.4.5",
+        "ejs": "*",
+        "exec-sync": "*",
+        "ejs-locals": "*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rixrix/singletasking.git"
+    },
+    "keywords": [
+        "todo",
+        "time",
+        "task",
+        "app"
+    ],
+    "author": {
+        "name": "Richard Sentino",
+        "email": "richard@mindginative.com"
+    },
+    "license": "BSD",
+    "bugs": {
+        "url": "https://github.com/rixrix/singletasking/issues"
+    }
+}

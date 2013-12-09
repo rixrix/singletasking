@@ -1,19 +1,17 @@
 SingleTasking
 =============
 
-A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo app that lets you throw in your current task and forget about it at the end of the day. You just need the details anyway because, I would assume, you're using an existing awesome-cloud-based-company-wide-web-based-big-brother-sort-of-thing task management tool or timeshit to transfer your time logs.
+A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo app that lets you throw in your current task and forget about it at the end of the day. You just need the details anyway, I would assume, you're using an existing awesome-cloud-based-company-wide-web-based timesheet, timesuit, task tracking or PM tool for you logs.
 
 ![SingleTasking in Action](https://raw.github.com/rixrix/singletasking/master/public/images/singletasking-in-action.png?raw=true)
 
 ### Features
 
-* No start button
-* No end button
-* When you add a task
-** timer starts counting, without stopping
-** well, until you add another task - it'll stop
+* No start or end button
+* New task will start counting time immediately
 * Display total hours, minutes or seconds you spent each task
 * Delete a single or group of tasks
+* Quick task addition - type and hit enter. done
 
 ### Todo
 
@@ -21,15 +19,13 @@ A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo ap
 * Option to select the type of task eg. coding, water-cooler discussion, kill-the-time, meeting
 * Graphs
 * DB support
-* Auto-focus text for quick typing of task
-* Remove add button
-* Display warning when the user hit the refresh button
-* Mobile app
+* Display warning when the user hit the refresh button (until DB support)
 * Export task to JSON or CSV
+* Display overall total time
 
-### Warning
+### Reminder
 
-* Please don't suggest to add the start and stop button - it's one of the unique selling features
+* Please NO feature request for start or stop button - it's one of the unique features
 
 ### Installation
 

@@ -1,7 +1,7 @@
 {
     "name": "singletasking",
     "version": "0.0.1",
-    "description": "A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo app that lets you throw in your current task(s) and forget about it at the end of the day. You just need the details anyway because, I would assume, you're using an existing awesome-cloud-based-company-wide-web-based-big-brother-sort-of-thing task management tool or timeshit to transfer your time logs.",
+    "description": "A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo app that lets you throw in your current task and forget about it at the end of the day. You just need the details anyway, I would assume, you're using an existing awesome-cloud-based-company-wide-web-based timesheet, timesuit, task tracking or PM tool for you logs.",
     "main": "singletasking",
     "bin": {
         "singletasking":"singletasking-cli"

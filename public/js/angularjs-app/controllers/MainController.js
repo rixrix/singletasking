@@ -1,6 +1,9 @@
 var taskApp = angular.module('taskApp.controllers', []);
 
 taskApp.controller('MainController', ['$scope', '$http', '$timeout', 'taskFactory',function($scope, $http, $timeout, taskFactory){
+
+    $scope.newTaskInputField = true;
+
     /* ID of in-progress task */
     $scope.currentTaskId = null;
 
@@ -47,6 +50,7 @@ taskApp.controller('MainController', ['$scope', '$http', '$timeout', 'taskFactor
 
     $scope.addTask = function(task) {
         if (task) {
+
             var newTaskId = $scope.tasksContainer.addItem(task);
 
             if ($scope.currentTaskId) {
@@ -55,4 +59,25 @@ taskApp.controller('MainController', ['$scope', '$http', '$timeout', 'taskFactor
             $scope.currentTaskId = newTaskId;
         }
     }
+
 }]);
+
+taskApp.directive('stNewtask', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, element, attr) {
+            scope.$watch(attr.stNewtask, function(n, o){
+                if (n != 0 && n) {
+                    element[0].focus();
+                }
+            });
+
+            element.bind('keydown', function(e){
+                if(e.keyCode == 13) {
+                    scope.$apply('addTask(newTask)');
+                    scope.$apply('newTask=""');
+                }
+            });
+        }
+    };
+});

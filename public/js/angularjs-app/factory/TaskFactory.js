@@ -55,7 +55,6 @@ taskApp.factory('taskFactory', function(){
      * @param int   taskId
      */
     tasknameService.update = function(taskId) {
-        console.log("update >" + taskId);
         try {
             angular.forEach(tasknames, function(task, key){
                 if (taskId == task.id) {

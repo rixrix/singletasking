@@ -6,10 +6,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <input type="text" class="form-control input-lg" ng-model="newTask" placeholder="What are you doing?" st-newtask="newTaskInputField">
-                </div><!-- /.col-lg-6 -->
+                </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
         </form>
     </div>
+
     <br />
     <div class="row">
         <div class="panel">
@@ -26,13 +27,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="task in tasksContainer.list()">
+                <tr ng-repeat="task in tasksContainer.list() | orderBy: '-start_date'">
                     <td align="center">
                         <input type="checkbox" ng-click="updateSelection(task.id)" />
                     </td>
-                    <td>{{task.name}}</td>
+                    <td><a href="#" editable-text="task.name">{{task.name}}</a></td>
                     <td>{{task.start_date}} </td>
-                    <td>{{task.end_date}}</td>
+                    <td><span ng-bind-html-unsafe="task.end_date || '<span class=\'label label-info\'>in progress...</span>'"></span></td>
                     <td>{{task.total}}</td>
                 </tr>
                 </tbody>

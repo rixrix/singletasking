@@ -18,7 +18,7 @@ taskApp.factory('taskFactory', function(){
                 id: _date.getTime(),
                 name: task,
                 start_date: _date.getDate() + '/' + month + '/' + _date.getFullYear() + ' ' + _date.getHours() + ':' + _date.getMinutes() + ':' + _date.getSeconds(),
-                end_date: "in progress...",
+                end_date: "",
                 total: 0
             };
             tasknames.push(_task);

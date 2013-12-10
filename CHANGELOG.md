@@ -1,3 +1,7 @@
+### v0.0.3
+* editable taskname
+* display in progress task at the top level
+
 ### v0.0.2
 * modified description, more friendly
 * minor UI tweaks

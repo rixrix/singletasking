@@ -12,24 +12,27 @@ A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo ap
 * Display total hours, minutes or seconds you spent each task
 * Delete a single or group of tasks
 * Quick task addition - type and hit enter. done
+* Local database support via PouchDB
 
 ### Todo
 
-* Editable task name
-* Option to select the type of task eg. coding, water-cooler discussion, kill-the-time, meeting
-* Graphs
-* DB support
-* Display warning when the user hit the refresh button (until DB support)
-* Export task to JSON or CSV
-* Display overall total time
+* check [https://github.com/rixrix/singletasking/issues](https://github.com/rixrix/singletasking/issues)
 
-### Reminder
+### Warning
 
 * Please NO feature request for start or stop button - it's one of the unique features
 
+### Made Possible with
+
+* Node.js
+* PouchDB
+* ExpressJS
+* AngularJS
+* and countless man-hours (not including coffee) of authors
+
 ### Installation
 
-* install `nodejs`, `git` (`homebrew install nodejs git`)
+* install `nodejs` (`homebrew install nodejs`)
 * `npm install singletasking -g`
 * `singletasking`
 * open your browser and go to [http://localhost:3000/](http://localhost:3000/)

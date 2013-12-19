@@ -1,7 +1,7 @@
 
 var taskApp = angular.module('taskApp', [
     'taskApp.controllers',
-    'taskApp.taskFactory',
+    'taskApp.services',
     'xeditable',
     'ngSanitize'
 ]);

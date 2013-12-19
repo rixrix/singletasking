@@ -1,20 +1,44 @@
 var taskApp = angular.module('taskApp.controllers', []);
 
-taskApp.controller('MainController', ['$scope', '$http', '$timeout', 'taskFactory',function($scope, $http, $timeout, taskFactory){
-
-    $scope.newTaskInputField = true;
-
-    /* ID of in-progress task */
-    $scope.currentTaskId = null;
-
-    /* tasks container from factory */
-    $scope.tasksContainer = taskFactory;
-
-    /* temporary container for task for deletion */
+taskApp.controller('MainController', ['$scope', '$http', '$timeout', 'db', function($scope, $http, $timeout, db){
+    $scope.list = [];
     $scope.tmpTaskContainer = [];
 
+    $scope.tasks = function() {
+        db.allDocs({include_docs:true}, function(error, doc){
+            $scope.$apply(function(){
+                angular.forEach(doc.rows, function(task, key){
+                   $scope.list.push(task.doc);
+                });
+            });
+        });
+    }
+    $scope.tasks();
+
     /**
-     * Removes the selected task from the list. It's also advisable to cleanup tmpTaskCo[ntainer to avoid
+     * Adds a new task
+     *
+     * @param string    task name
+     */
+    $scope.add = function(task) {
+        var _doc = {
+            name: task,
+            start_date: new Date().getTime(),
+            end_date: null,
+            duration: null
+        };
+
+        db.post(_doc, function(err, doc){
+            db.get(doc.id, function(err, doc){
+                $scope.$apply(function(){
+                    $scope.list.push(doc);
+                });
+            });
+        });
+    }
+
+    /**
+     * Removes the selected task from the list. It's also advisable to cleanup tmpTaskContainer to avoid
      * keeping of stale data
      */
     $scope.removeTasks = function() {
@@ -22,7 +46,12 @@ taskApp.controller('MainController', ['$scope', '$http', '$timeout', 'taskFactor
             var tmpTasks = [];
 
             angular.forEach($scope.tmpTaskContainer, function(taskId, key){
-                $scope.tasksContainer.removeItem(taskId);
+                db.get(taskId, function(err, doc){
+                    db.remove(doc, function(err, doc){});
+                    $scope.$apply(function(){
+                        $scope.list.splice($scope.list.map(function(e){ return e._id;}).indexOf(taskId), 1);
+                    });
+                });
                 tmpTasks.push(taskId);
             });
 
@@ -48,18 +77,6 @@ taskApp.controller('MainController', ['$scope', '$http', '$timeout', 'taskFactor
         }
     }
 
-    $scope.addTask = function(task) {
-        if (task) {
-
-            var newTaskId = $scope.tasksContainer.addItem(task);
-
-            if ($scope.currentTaskId) {
-                $scope.tasksContainer.update($scope.currentTaskId);
-            }
-            $scope.currentTaskId = newTaskId;
-        }
-    }
-
 }]);
 
 taskApp.directive('stNewtask', function(){
@@ -74,7 +91,7 @@ taskApp.directive('stNewtask', function(){
 
             element.bind('keydown', function(e){
                 if(e.keyCode == 13) {
-                    scope.$apply('addTask(newTask)');
+                    scope.$apply('add(newTask)');
                     scope.$apply('newTask=""');
                 }
             });

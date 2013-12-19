@@ -32,7 +32,7 @@
                         <input type="checkbox" ng-click="updateSelection(task._id)" />
                     </td>
                     <td><a href="#" editable-text="task.name">{{task.name}}</a></td>
-                    <td>{{task.start_date}} </td>
+                    <td>{{task.start_date | date: 'hh:mm:ss a'}} </td>
                     <td><span ng-bind-html-unsafe="task.end_date || '<span class=\'label label-info\'>in progress...</span>'"></span></td>
                     <td>{{task.duration}}</td>
                 </tr>

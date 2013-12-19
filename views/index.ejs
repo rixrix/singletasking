@@ -23,13 +23,13 @@
                     <th>Task</th>
                     <th>Time Start</th>
                     <th>Time End</th>
-                    <th>Total</th>
+                    <th>Duration</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="task in tasksContainer.list() | orderBy: '-start_date'">
+                <tr ng-repeat="task in list">
                     <td align="center">
-                        <input type="checkbox" ng-click="updateSelection(task.id)" />
+                        <input type="checkbox" ng-click="updateSelection(task._id)" />
                     </td>
                     <td><a href="#" editable-text="task.name">{{task.name}}</a></td>
                     <td>{{task.start_date}} </td>

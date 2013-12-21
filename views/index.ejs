@@ -10,7 +10,6 @@
             </div><!-- /.row -->
         </form>
     </div>
-
     <br />
     <div class="row">
         <div class="panel">
@@ -34,7 +33,7 @@
                     <td><a href="#" editable-text="task.name">{{task.name}}</a></td>
                     <td>{{task.start_date | date: 'hh:mm:ss a'}} </td>
                     <td>{{task.end_date | date: 'hh:mm:ss a'}}</td>
-                    <td>{{task.duration}}</td>
+                    <td><span ng-bind-html-unsafe="task.duration || '<span class=\'label label-info\'>in progress</span>'"></span></td>
                 </tr>
                 </tbody>
             </table>

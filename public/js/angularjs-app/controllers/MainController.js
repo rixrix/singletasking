@@ -9,7 +9,8 @@ taskApp.controller('MainController', ['$scope', '$http', '$timeout', 'db', funct
         db.allDocs({include_docs:true}, function(error, doc){
             $scope.$apply(function(){
                 angular.forEach(doc.rows, function(task, key){
-                   $scope.list.push(task.doc);
+                    $scope.list.push(task.doc);
+                    if (task.doc['is_active']) $scope.inProgressId = task.doc['_id'];
                 });
             });
         });
@@ -26,7 +27,8 @@ taskApp.controller('MainController', ['$scope', '$http', '$timeout', 'db', funct
             name: task,
             start_date: new Date().getTime(),
             end_date: null,
-            duration: null
+            duration: null,
+            is_active: true
         };
 
         db.post(_doc, function(err, doc){
@@ -96,12 +98,23 @@ taskApp.controller('MainController', ['$scope', '$http', '$timeout', 'db', funct
     $scope.update = function(taskId) {
         db.get(taskId, function(err, doc){
             var start_date = new Date(doc.start_date),
-                end_date = new Date().getTime();
+                end_date = new Date().getTime(),
+                duration;
+
+            duration = $scope.computeDuration(start_date, end_date);
 
             doc.end_date = end_date;
-            doc.duration = $scope.computeDuration(doc.start_date, doc.end_date);
+            doc.duration = duration;
+            doc.is_active = false;
 
-            db.post(doc, function(err, res){});
+            db.put(doc, function(err, res){});
+
+            $scope.$apply(function(){
+                var position = $scope.list.map(function(e){ return e._id}).indexOf(taskId);
+                $scope.list[position]['end_date'] = end_date;
+                $scope.list[position]['duration'] = duration;
+                $scope.list[position]['is_active'] = false;
+            });
         });
     }
 

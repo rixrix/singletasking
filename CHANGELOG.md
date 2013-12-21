@@ -1,3 +1,8 @@
+### v0.1.0
+* Local DB support c/o PouchDB
+* Refactored various area to support PouchDB
+* sorry, no 0.0.4 to 0.0.9 - blame PouchDB
+
 ### v0.0.3
 * editable taskname
 * display in progress task at the top level

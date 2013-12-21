@@ -27,7 +27,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="task in list">
+                <tr ng-repeat="task in list | orderBy:'start_date':reverse=true">
                     <td align="center">
                         <input type="checkbox" ng-click="updateSelection(task._id)" />
                     </td>

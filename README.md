@@ -1,9 +1,9 @@
 SingleTasking
 =============
 
-A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo app that lets you throw in your current task and forget about it at the end of the day. You just need the details anyway, I would assume, you're using an existing awesome-cloud-based-company-wide-web-based timesheet, timesuit, task tracking or PM tool for you logs.
-
 ![SingleTasking in Action](https://raw.github.com/rixrix/singletasking/master/public/images/singletasking-in-action.png?raw=true)
+
+A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo app that lets you throw in your current task and forget about it at the end of the day. You just need the details anyway, I would assume, you're using an existing awesome-cloud-based-company-wide-web-based timesheet, timesuit, task tracking or PM tool for you logs.
 
 ### Features
 
@@ -11,7 +11,7 @@ A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo ap
 * New task will start counting time immediately
 * Display total hours, minutes or seconds you spent each task
 * Delete a single or group of tasks
-* Quick task addition - type and hit enter. done
+* Quick task addition - type and hit enter.
 * Local database support via PouchDB
 
 ### Todo
@@ -22,7 +22,7 @@ A dead simple, horribly easy, yes web-based, like a walk-in-the-park web todo ap
 
 * Please NO feature request for start or stop button - it's one of the unique features
 
-### Made Possible with
+### Made with
 
 * Node.js
 * PouchDB
